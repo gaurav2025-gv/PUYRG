@@ -19,6 +19,7 @@ import {
 import type { FormEvent, ReactNode } from 'react'
 import { useState } from 'react'
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts'
+import { apiUrl } from './config'
 import './CompanyAnalysis.css'
 
 type ReadinessWeight = {
@@ -271,7 +272,7 @@ export function CompanyAnalysis() {
     setAnalysis(null)
 
     try {
-      const response = await fetch('/api/ai/company-analysis', {
+      const response = await fetch(apiUrl('/api/ai/company-analysis'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ companyName: trimmed }),

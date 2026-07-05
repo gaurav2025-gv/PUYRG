@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 import type { FormEvent } from 'react'
 import { useRef, useState } from 'react'
+import { apiUrl } from './config'
 import './ProblemLogger.css'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -77,7 +78,7 @@ export function ProblemLogger({ onProblemLogged, recentProblems }: Props) {
     setSaved(false)
 
     try {
-      const resp = await fetch('/api/ai/log-problem', {
+      const resp = await fetch(apiUrl('/api/ai/log-problem'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

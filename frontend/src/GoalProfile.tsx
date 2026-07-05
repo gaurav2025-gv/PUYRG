@@ -19,6 +19,7 @@ import {
 import type { ReactNode } from 'react'
 import { useState } from 'react'
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts'
+import { apiUrl } from './config'
 import './GoalProfile.css'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -151,7 +152,7 @@ function DrillCategoryRow({
     setSubLoading(true)
     setSubError('')
     try {
-      const resp = await fetch('/api/ai/topic-drill', {
+      const resp = await fetch(apiUrl('/api/ai/topic-drill'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -401,7 +402,7 @@ function TopicAccordion({ topics, companyName, onDrillSave }: TopicAccordionProp
     try {
         const controller = new AbortController()
         const timeout = setTimeout(() => controller.abort(), 175000)
-        const resp = await fetch('/api/ai/topic-drill', {
+        const resp = await fetch(apiUrl('/api/ai/topic-drill'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ topicName, companyName }),

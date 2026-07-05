@@ -39,6 +39,8 @@ import {
 } from 'recharts'
 import './App.css'
 
+import { apiUrl } from './config'
+
 // ── Revision types ────────────────────────────────────────────────────────────
 
 type RevisionEntry = {
@@ -251,7 +253,7 @@ export default function App() {
     try {
       const ctrl = new AbortController()
       const t = setTimeout(() => ctrl.abort(), 175000)
-      const resp = await fetch('/api/ai/company-analysis', {
+      const resp = await fetch(apiUrl('/api/ai/company-analysis'), {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ companyName: trimmed }), signal: ctrl.signal,
       })
