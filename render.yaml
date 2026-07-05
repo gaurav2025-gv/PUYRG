@@ -1,10 +1,11 @@
 services:
   - type: web
-    name: puyrg-backend
+    name: puyrg-ai
     runtime: go
     rootDir: backend
     buildCommand: go build -o puyrg ./cmd/api/
     startCommand: ./puyrg
+    healthCheckPath: /health
     envVars:
       - key: APP_ENV
         value: production
