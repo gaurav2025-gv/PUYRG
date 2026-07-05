@@ -1,0 +1,6 @@
+backend/.env
+backend/data/store.json
+backend/data/store.json.tmp
+frontend/node_modules/
+frontend/dist/
+
