@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: puyrg-backend
+    runtime: go
+    rootDir: backend
+    buildCommand: go build -o puyrg ./cmd/api/
+    startCommand: ./puyrg
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: PORT
+        value: 8080
+      - key: DB_SSLMODE
+        value: require
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        sync: false
